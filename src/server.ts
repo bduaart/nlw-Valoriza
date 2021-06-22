@@ -1,17 +1,16 @@
+import "reflect-metadata";
 import express from "express";
+
+import { router } from "./routes";
+
+import "./database";
 
 //@type/express
 const app = express();
 
-//GET
-app.get("/test", (request, response) => {
-    return response.send("Hello NLW");
-});
+app.use(express.json());
 
-//POST
-app.post("/test-post", (request, response) => {
-    return response.send("Hello NLW Post");
-})
+app.use(router);
 
 // http://localhost:3000
 app.listen(3000, () => console.log("Server is running"));
